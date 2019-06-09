@@ -1,6 +1,7 @@
 import React from 'react';
 import { Animated } from 'react-native';
 import { PulseIndicator } from 'react-native-indicators';
+import PropTypes from 'prop-types';
 
 class LoadingScreen extends React.Component {
     state = {
@@ -15,7 +16,6 @@ class LoadingScreen extends React.Component {
         },
       ).start(() => this.props.navigation.navigate('App'));
     }
-
     render() {
       const { fadeAnim } = this.state;
       return (
@@ -24,11 +24,15 @@ class LoadingScreen extends React.Component {
                     flex: 1,
                     opacity: fadeAnim, // Bind opacity to animated value
                 }}
-            >
+        >
           <PulseIndicator color="green" />
         </Animated.View>
       );
     }
 }
+
+LoadingScreen.propTypes = {
+  navigation: PropTypes.func.isRequired,
+};
 
 export default LoadingScreen;

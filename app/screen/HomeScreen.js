@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => (
+const Home = () => (
   <View style={styles.container}>
     <Text style={styles.welcome}>
         Welcome to React Native!
@@ -51,3 +51,9 @@ export default () => (
     </Text>
   </View>
 );
+
+Home.navigationOptions = {
+  title: 'Users',
+};
+
+export default Home;
