@@ -4,30 +4,30 @@ import { PulseIndicator } from 'react-native-indicators';
 
 class LoadingScreen extends React.Component {
     state = {
-        fadeAnim: new Animated.Value(0), 
+      fadeAnim: new Animated.Value(0),
     }
     componentDidMount() {
-        Animated.timing(                  
-            this.state.fadeAnim,           
-            {
-                toValue: 1,                   
-                duration: 3000, //1000ms = 1s              
-            }
-        ).start(()=>this.props.navigation.navigate('App'));                      
+      Animated.timing(
+        this.state.fadeAnim,
+        {
+          toValue: 1,
+          duration: 3000, // 1000ms = 1s
+        },
+      ).start(() => this.props.navigation.navigate('App'));
     }
 
     render() {
-        let { fadeAnim } = this.state;
-        return (
-            <Animated.View                 // Special animatable View
-                style={{
+      const { fadeAnim } = this.state;
+      return (
+        <Animated.View // Special animatable View
+          style={{
                     flex: 1,
-                    opacity: fadeAnim,         // Bind opacity to animated value
+                    opacity: fadeAnim, // Bind opacity to animated value
                 }}
             >
-                <PulseIndicator color='green' />
-            </Animated.View>
-        );
+          <PulseIndicator color="green" />
+        </Animated.View>
+      );
     }
 }
 
