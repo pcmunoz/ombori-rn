@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 
 const UserContainer = styled.View`
@@ -28,12 +29,18 @@ const Detail = styled.View`
 
 const Name = styled.Text``;
 
-const User = ({ user }) => (
+const User = ({ user, navigation }) => (
   <UserContainer>
     <PictureContainer source={{ uri: user.avatar }} />
-    <Detail>
-      <Name>{user.firstName} {user.lastName}</Name>
-    </Detail>
+    <TouchableOpacity
+      onPress={() => navigation.push('Detail', {
+        user,
+      })}
+    >
+      <Detail>
+        <Name>{user.firstName} {user.lastName}</Name>
+      </Detail>
+    </TouchableOpacity>
   </UserContainer>
 );
 
@@ -44,6 +51,9 @@ User.propTypes = {
     email: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
   }).isRequired,
+  navigation: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default User;
+export default withNavigation(User);
