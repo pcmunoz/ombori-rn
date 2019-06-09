@@ -19,13 +19,35 @@ class LoadingScreen extends React.Component {
     render() {
       const { fadeAnim } = this.state;
       return (
-        <Animated.View // Special animatable View
+        <Animated.View
           style={{
                     flex: 1,
-                    opacity: fadeAnim, // Bind opacity to animated value
+                    opacity: fadeAnim,
+                    justifyContent: 'center',
+                    alignItems: 'center',
                 }}
         >
-          <PulseIndicator color="green" />
+          <Animated.View style={{
+            height: 40,
+            width: 40,
+            borderRadius: 40 / 2,
+            backgroundColor: 'green',
+            transform: [{
+              scale: fadeAnim.interpolate({
+                inputRange: [0, 0.67, 1],
+                outputRange: 1 ?
+                  [0.4, 0.6, 0.4]:
+                  [0.4, 0.6, 1.0],
+              }),
+            }],
+            opacity: fadeAnim.interpolate({
+              inputRange: [0, 0.67, 1],
+              outputRange: 0.5 ?
+                [1.0, 1.0, 1.0]:
+                [0.5, 0.5, 0.0],
+            }),
+          }
+          }/>
         </Animated.View>
       );
     }

@@ -24,7 +24,7 @@ const SwitchNav = createSwitchNavigator(
     App: AppStack,
   },
   {
-    initialRouteName: 'App',
+    initialRouteName: 'Loading',
   },
 );
 

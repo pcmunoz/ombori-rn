@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import navigation from './app/navigation';
+import Index from './app/index';
 
-AppRegistry.registerComponent('Ombori', () => navigation);
+AppRegistry.registerComponent('Ombori', () => Index);
