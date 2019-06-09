@@ -5,7 +5,7 @@ import Navigation from './navigation';
 import Reducer from './reducer';
 import { sagaMiddleware } from './middleware';
 import saga from './saga';
-import {loadUsersList} from './actions';
+import { loadUsersList } from './actions';
 
 const store = createStore(Reducer, applyMiddleware(sagaMiddleware));
 

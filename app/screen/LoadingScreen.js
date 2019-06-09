@@ -1,6 +1,5 @@
 import React from 'react';
 import { Animated } from 'react-native';
-import { PulseIndicator } from 'react-native-indicators';
 import PropTypes from 'prop-types';
 
 class LoadingScreen extends React.Component {
@@ -36,14 +35,14 @@ class LoadingScreen extends React.Component {
               scale: fadeAnim.interpolate({
                 inputRange: [0, 0.67, 1],
                 outputRange: 1 ?
-                  [0.4, 0.6, 0.4]:
+                  [0.4, 0.6, 0.4] :
                   [0.4, 0.6, 1.0],
               }),
             }],
             opacity: fadeAnim.interpolate({
               inputRange: [0, 0.67, 1],
               outputRange: 0.5 ?
-                [1.0, 1.0, 1.0]:
+                [1.0, 1.0, 1.0] :
                 [0.5, 0.5, 0.0],
             }),
           }
@@ -54,7 +53,9 @@ class LoadingScreen extends React.Component {
 }
 
 LoadingScreen.propTypes = {
-  navigation: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default LoadingScreen;

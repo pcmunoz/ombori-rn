@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import HomeComponent from '../component/HomeComponent';
-import { loadUser } from '../actions';
+import { loadUsersList } from '../actions';
 
 const mapStateToProps = state => ({
   users: state.users.list,
+  meta: state.users.meta,
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadUser: () => dispatch(loadUser),
+  loadMore: () => dispatch(loadUsersList()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
